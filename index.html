@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<title>爱孙胡清悦 · 百日宴</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#f3d7d2;font-family:"Songti SC","STSong","SimSun",serif;color:#5a3d3d}
+body{overflow:hidden}
+.stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 30%,#fff8f4,#f4d4ce 70%,#e9c4c0)}
+.petal{position:absolute;width:12px;height:16px;border-radius:12px 2px 12px 2px;background:linear-gradient(135deg,#f2b6bc,#e88a96);opacity:.7;animation:fall linear infinite;pointer-events:none}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0);opacity:0}10%{opacity:.8}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+.wrap{position:relative;width:min(92vw,420px);height:min(88dvh,760px)}
+.env,.card{position:absolute;inset:0;border-radius:18px}
+.env{z-index:3;background:linear-gradient(180deg,#f7d0cc,#efb8b6);box-shadow:0 18px 50px rgba(140,70,80,.28);overflow:hidden;transition:.8s}
+.env.open{transform:translateY(18%) scale(.96);opacity:0;pointer-events:none}
+.flap{position:absolute;left:0;right:0;top:0;height:46%;background:linear-gradient(180deg,#fbe0dc,#e9a8a6);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;z-index:4;transition:.9s}
+.env.open .flap{transform:rotateX(180deg)}
+.pocket{position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,#f3c4c0,#e9ada9)}
+.seal{position:absolute;left:50%;top:42%;transform:translate(-50%,-30%);width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d97680,#b44555 62%,#8e2f3d);color:#fff7ea;font-size:30px;display:flex;align-items:center;justify-content:center;z-index:5}
+.hint{position:absolute;left:0;right:0;bottom:28px;text-align:center;color:#7a4448;letter-spacing:.28em;z-index:6}
+.hint b{display:block;font-size:20px;letter-spacing:.42em;margin-bottom:10px;font-weight:400}
+.card{z-index:2;background:#fffdf9;box-shadow:0 16px 40px rgba(120,60,70,.18);padding:22px;display:flex;flex-direction:column;align-items:center;transform:translateY(18%) scale(.94);opacity:0;transition:.9s .15s;overflow:auto}
+.card.show{transform:none;opacity:1}
+.kicker{font-size:12px;letter-spacing:.42em;color:#c45c6a;margin-top:6px}
+.h1{font-size:34px;letter-spacing:.28em;margin:8px 0;font-weight:400}
+.who small{display:block;font-size:13px;letter-spacing:.5em;color:#c45c6a;text-align:center}
+.who strong{display:block;font-size:28px;letter-spacing:.36em;margin-top:6px;font-weight:400;text-align:center}
+.portrait{width:118px;height:118px;border-radius:50%;margin:12px 0 8px;border:3px solid #e8c9a8;box-shadow:0 0 0 7px #fff;background:radial-gradient(circle at 50% 40%,#fbe7e4,#f0c6c2);display:flex;align-items:center;justify-content:center;font-size:42px;color:#b85c66}
+.msg{font-size:14px;line-height:1.9;text-align:center;letter-spacing:.12em;color:#6b4a4a}
+.meta{width:100%;margin-top:12px;padding:12px 10px;border-radius:14px;background:#fff8f4;border:1px solid rgba(196,165,116,.28)}
+.row{display:flex;gap:8px;padding:7px 4px;font-size:14px;line-height:1.55}
+.lab{flex:0 0 42px;color:#c45c6a;letter-spacing:.2em}
+.foot{margin-top:auto;padding-top:14px;text-align:center;font-size:13px;letter-spacing:.28em;color:#8a5a5a}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+<div class="wrap">
+<section class="card" id="card">
+<div class="kicker">幸福将至</div>
+<h1 class="h1">百日宴</h1>
+<div class="who"><small>爱孙</small><strong>胡清悦</strong></div>
+<div class="portrait">悦</div>
+<p class="msg">小宝呆呆降世百日<br>诚邀自家亲友光临<br>共证这份轻软喜悦</p>
+<div class="meta">
+<div class="row"><div class="lab">时间</div><div>公历2026年10月3日星期六中午<br>农历丙午年八月廿三</div></div>
+<div class="row"><div class="lab">地点</div><div>江苏省泰兴市珊瑚镇胡家岱<br>胡建龙家</div></div>
+</div>
+<div class="foot">胡建龙一家 敬邀</div>
+</section>
+<section class="env" id="env">
+<div class="flap"></div><div class="pocket"></div>
+<div class="seal">悦</div>
+<div class="hint"><b>百日之喜</b>点击信封打开</div>
+</section>
+</div>
+</div>
+<script>
+const stage=document.getElementById('stage');
+for(let i=0;i<18;i++){const p=document.createElement('i');p.className='petal';p.style.left=Math.random()*100+'%';p.style.animationDuration=7+Math.random()*7+'s';p.style.animationDelay=Math.random()*8+'s';stage.appendChild(p)}
+document.getElementById('env').onclick=function(){this.classList.add('open');document.getElementById('card').classList.add('show')}
+</script>
+</body>
+</html>
